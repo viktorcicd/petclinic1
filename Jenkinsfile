@@ -3,39 +3,27 @@ pipeline {
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
-        maven 'Maven-3.8'
+        maven 'maven-3.8'
     }
 
     stages {
         stage('Build jar') {
-            steps {
-                // Get some code from a GitHub repository              
-                // Run Maven on a Unix agent.
-                sh "mvn package"
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            steps {               
+                sh "mvn package"               
             }     
         }
      
         stage('Build image') {
-            steps {
-                // Get some code from a GitHub repository              
-                // Run Maven on a Unix agent.
+            steps {               
                 sh "./mvnw spring-boot:build-image"
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+               
             }
-        
-            post {
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                success {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-               //   archiveArtifacts 'target/*.jar'
-
-            
+        }
+        stage('Build deploy over SSH') {
+            steps {
+               // def dockerC = 'docker run
+                sshagent(['ec2-server-key']) {
+                    sh "ssh -o StrictHostKeyChecking=no ubuntu@10.0.10.149"               
                 }
             }
         }
