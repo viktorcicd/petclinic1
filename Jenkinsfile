@@ -34,7 +34,8 @@ pipeline {
             steps {
                 
                 sshagent(['Victor-key-frankfurt']) {
-                    sh 'pwd' 
+                    sh 'ls' 
+                    sh 'ifconfig'
                 }
 
                 // To run Maven on a Windows agent, use
