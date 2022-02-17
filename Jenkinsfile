@@ -34,8 +34,8 @@ pipeline {
             steps {
                 
                 sshagent(['Victor-key-frankfurt']) {
-                    sh 'ls' 
-                    sh 'ifconfig'
+                    sh 'scp target/*jar ubuntu@10.0.11.120:/home/jenkins' 
+                    
                 }
 
                 // To run Maven on a Windows agent, use
