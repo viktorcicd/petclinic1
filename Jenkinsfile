@@ -13,7 +13,7 @@ pipeline {
             steps {
                 
                 sshagent(['Victor-key-frankfurt']) {
-                    sh 'scp target/*jar ubuntu@10.0.11.120:/home/jenkins' 
+                    sh 'scp target/*jar ubuntu@3.121.40.168:/home/jenkins' 
                     
                 }
 
