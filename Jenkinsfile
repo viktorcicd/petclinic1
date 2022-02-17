@@ -32,7 +32,7 @@ pipeline {
             
         stage('Build deploy') {
             steps {
-                sh 'sudo docker run -d -p 1234:8080 petclinic1:v1'
+                sh 'docker run -d -p 1234:8080 petclinic1:v1'
                 
 
                 // To run Maven on a Windows agent, use
