@@ -34,7 +34,7 @@ pipeline {
             steps {
                 
                 sshagent(['Victor-key-frankfurt']) {
-                    sh 'scp *jar /home/myjar/java 
+                    sh 'scp *jar /home/myjar/java' 
                 }
 
                 // To run Maven on a Windows agent, use
