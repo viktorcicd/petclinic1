@@ -25,7 +25,7 @@ pipeline {
                     sh 'docker build -t petclinic1:v1 .'
                     sh "echo $myPass | docker login -u $myUser' --password-stdin"
                     sh 'docker push petclinic1:v1'
-
+                }
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
