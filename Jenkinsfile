@@ -33,7 +33,7 @@ pipeline {
         stage('Build deploy') {
             steps {
           //      sh 'docker kill $(docker ps -q)'
-                sh 'docker run -d -p 1234:8080 petclinic1:v1'
+                sh 'docker run -d -p 1235:8080 petclinic1:v1'
                 
 
                 // To run Maven on a Windows agent, use
